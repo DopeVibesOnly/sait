@@ -1,0 +1,276 @@
+/* Compliment Generator Styles */
+.compliment-generator {
+    min-height: 100vh;
+    padding: 120px 5% 80px;
+    background: linear-gradient(135deg, #ffb6c1, #ffc8dd, #ffafcc, #ff85a2);
+    background-size: 300% 300%;
+    position: relative;
+    overflow: hidden;
+    animation: gradientAnimation 15s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.generator-title {
+    text-align: center;
+    position: relative;
+    margin-bottom: 50px;
+    z-index: 10;
+}
+
+.generator-title h2 {
+    font-family: 'Great Vibes', 'Dancing Script', 'Pacifico', cursive;
+    font-size: 4.5rem;
+    color: #fff;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 255, 255, 0.4);
+    margin: 0;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.title-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.title-sparkle {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: titleSparkle 3s ease-in-out infinite;
+}
+
+.title-sparkle.left {
+    left: -100px;
+    animation-delay: 0.5s;
+}
+
+.title-sparkle.right {
+    right: -100px;
+    animation-delay: 1.5s;
+}
+
+.generator-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+    padding: 50px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.8);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.5s ease;
+    z-index: 10;
+}
+
+.generator-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(255, 133, 162, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.9);
+}
+
+.generator-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    animation: shimmer 8s infinite;
+    pointer-events: none;
+}
+
+.compliment-display {
+    background: linear-gradient(135deg, #fff5f7, #fff);
+    border-radius: 20px;
+    padding: 50px 40px;
+    margin-bottom: 40px;
+    position: relative;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 30px rgba(255, 133, 162, 0.2), 0 10px 20px rgba(0,0,0,0.05), 0 0 0 1px rgba(255, 182, 193, 0.5);
+    overflow: hidden;
+    transition: all 0.5s ease;
+    border: 1px solid rgba(255, 182, 193, 0.3);
+}
+
+.compliment-display::after {
+    content: """;
+    position: absolute;
+    font-family: 'Great Vibes', cursive;
+    font-size: 180px;
+    color: rgba(255, 133, 162, 0.07);
+    bottom: -40px;
+    right: 20px;
+    z-index: 0;
+}
+
+.compliment-display::before {
+    content: """;
+    position: absolute;
+    font-family: 'Great Vibes', cursive;
+    font-size: 180px;
+    color: rgba(255, 133, 162, 0.07);
+    top: -90px;
+    left: 20px;
+    z-index: 0;
+}
+
+.compliment-display:hover {
+    box-shadow: inset 0 0 40px rgba(255, 133, 162, 0.3), 0 15px 30px rgba(0,0,0,0.08), 0 0 0 1px rgba(255, 182, 193, 0.7);
+    transform: translateY(-5px);
+}
+
+#compliment-text {
+    font-family: 'Dancing Script', 'Marck Script', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #ff6699;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 1.4;
+}
+
+.hearts-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.generator-controls {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.generator-controls::before,
+.generator-controls::after {
+    content: "❀";
+    position: absolute;
+    font-size: 2rem;
+    color: rgba(255, 133, 162, 0.6);
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.generator-controls::before {
+    left: calc(50% - 180px);
+    animation: floatFlower 3s ease-in-out infinite;
+}
+
+.generator-controls::after {
+    right: calc(50% - 180px);
+    animation: floatFlower 3s ease-in-out infinite 1.5s;
+}
+
+.btn {
+    transform-origin: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 18px 40px;
+    font-size: 1.3rem;
+    font-family: 'Montserrat', 'Quicksand', sans-serif;
+}
+
+.btn:hover {
+    transform: translateY(-7px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 90, 138, 0.7), 0 0 0 4px rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border: 2px solid rgba(255, 133, 162, 0.3);
+    border-radius: 60px;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.btn:hover::after {
+    opacity: 1;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+}
+
+/* Animation for compliment appearance */
+@keyframes complimentAppear {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes titleSparkle {
+    0%, 100% { opacity: 0; transform: translateY(-50%) scale(0.8); }
+    50% { opacity: 0.8; transform: translateY(-50%) scale(1.2); }
+}
+
+@keyframes floatFlower {
+    0%, 100% { transform: translateY(-50%) rotate(0deg); }
+    50% { transform: translateY(-50%) translateX(10px) rotate(15deg); }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .generator-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    #compliment-text {
+        font-size: 1.8rem;
+    }
+    
+    .compliment-display {
+        padding: 30px 20px;
+    }
+    
+    .generator-title h2 {
+        font-size: 3rem;
+    }
+    
+    .title-sparkle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .title-sparkle.left {
+        left: -60px;
+    }
+    
+    .title-sparkle.right {
+        right: -60px;
+    }
+}

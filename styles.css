@@ -1,0 +1,677 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', 'Quicksand', 'Montserrat', sans-serif;
+    background-color: #fff5f7;
+    color: #4a4a4a;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;  
+    background: linear-gradient(45deg, #ffb6c1, #ffc8dd, #ffafcc, #ffc8dd, #ff85a2);
+    background-size: 400% 400%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 25px rgba(255, 133, 162, 0.3);
+    animation: gradientAnimation 15s ease infinite;
+    transition: padding 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), box-shadow 0.4s ease;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+header:hover {
+    padding: 40px 7%;
+    box-shadow: 0 8px 30px rgba(255, 133, 162, 0.5);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.logo h1 {
+    font-family: 'Great Vibes', 'Playfair Display', 'Dancing Script', cursive;
+    color: #fff;
+    font-size: 2.8rem;  
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25);
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.logo h1::before {
+    content: "❀";
+    position: absolute;
+    left: -35px;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    animation: floatIcon 3s ease-in-out infinite, rotateFlower 6s linear infinite;
+}
+
+.logo h1::after {
+    content: "❀";
+    position: absolute;
+    right: -35px;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    animation: floatIcon 3s ease-in-out infinite 1.5s, rotateFlower 6s linear infinite 1.5s;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.3rem;  
+    transition: all 0.5s;
+    position: relative;
+    padding: 8px 15px;
+    display: inline-block;
+    border-radius: 15px;
+    font-family: 'Dancing Script', 'Quicksand', sans-serif;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+
+nav ul li a:hover {
+    transform: translateY(-5px) scale(1.05);
+    text-shadow: 0 5px 20px rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+nav ul li a:hover span::before,
+nav ul li a:hover span::after {
+    display: none;
+}
+
+nav ul li a::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    left: 50%;
+    top: -15px;
+    transform: translateX(-50%) rotate(45deg) scale(0);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    opacity: 0;
+    z-index: -1;
+}
+
+nav ul li a:hover::before {
+    opacity: 0;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, #ff85a2, #fff, #ff85a2);
+    transition: width 0.4s, left 0.4s, box-shadow 0.4s;
+    border-radius: 3px;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.7);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #ffb6c1, #ffc8dd, #ffafcc, #ff85a2);
+    background-size: 300% 300%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 100px;  
+    animation: gradientAnimation 15s ease infinite;
+    box-shadow: inset 0 0 100px rgba(255, 133, 162, 0.3);
+}
+
+.petals-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 50px;  
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);  
+    animation: pulseIn 1.5s ease-out, floatAnimation 4s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.hero-content::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    animation: shimmer 8s infinite;
+    pointer-events: none;
+}
+
+.hero-content::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.1) 100%);
+    z-index: -1;
+}
+
+.hero-content h2 {
+    font-family: 'Great Vibes', 'Dancing Script', 'Pacifico', cursive;
+    font-size: 4.8rem;  
+    color: #ff6699;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+    letter-spacing: 2px;
+}
+
+.hero-content p {
+    font-family: 'Cormorant Garamond', 'Quicksand', sans-serif;
+    font-size: 1.7rem;  
+    margin-bottom: 35px;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+/* Wishes Section */
+.wishes {
+    padding: 100px 5%;
+    background-color: #fff;
+    position: relative;
+    background-image: linear-gradient(to bottom, #fff 0%, #fff5f7 50%, #fff 100%);
+    box-shadow: inset 0 0 50px rgba(255, 133, 162, 0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wishes h2, .gallery h2, .message h2 {
+    text-align: center;
+    font-family: 'Great Vibes', 'Dancing Script', 'Pacifico', cursive;
+    font-size: 3rem;
+    color: #ff85a2;
+    margin-bottom: 50px;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.wish-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.wish-card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    width: calc(25% - 30px);
+    min-width: 250px;
+    text-align: center;
+    transition: transform 0.5s, box-shadow 0.5s;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.wish-card:hover {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(255, 133, 162, 0.3);
+}
+
+.wish-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 175, 204, 0.3), rgba(255, 182, 193, 0.1));
+    transition: all 0.6s;
+    transform: rotate(45deg);
+}
+
+.wish-card:hover::before {
+    top: 100%;
+    left: 100%;
+}
+
+.wish-icon {
+    width: 85px;
+    height: 85px;
+    background: linear-gradient(to right, #ffb6c1, #ff6699);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 10px 20px rgba(255, 102, 153, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.7);
+    position: relative;
+    overflow: hidden;
+}
+
+.wish-icon i {
+    font-size: 2.2rem;
+    color: white;
+}
+
+.wish-icon::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    animation: shimmerIcon 6s infinite;
+    pointer-events: none;
+}
+
+.wish-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #ff85a2;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.wish-card p {
+    font-family: 'Cormorant Garamond', 'Quicksand', sans-serif;
+    line-height: 1.7;
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+/* Gallery Section */
+.gallery {
+    display: none;
+}
+
+/* Message Section */
+.message {
+    padding: 100px 5%;
+    background-color: #fff;
+    background-image: radial-gradient(circle at center, #fff 0%, #fff5f7 80%, #fff 100%);
+    box-shadow: inset 0 0 80px rgba(255, 133, 162, 0.15);
+}
+
+.message-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    transition: transform 0.5s, box-shadow 0.5s;
+    backdrop-filter: blur(10px);
+}
+
+.message-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(255, 133, 162, 0.3);
+}
+
+.message-card:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid #ffb6c1;
+    border-radius: 25px;
+    z-index: -1;
+    transition: all 0.5s;
+    background: linear-gradient(135deg, rgba(255,175,204,0.1), rgba(255,182,193,0.05));
+}
+
+.message-card:hover:before {
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border-color: #ff85a2;
+    border-width: 3px;
+    box-shadow: 0 0 20px rgba(255, 133, 162, 0.3);
+}
+
+.message-card p {
+    margin-bottom: 25px;
+    line-height: 1.8;
+    font-size: 1.25rem;
+    font-family: 'Cormorant Garamond', 'Quicksand', sans-serif;
+    font-weight: 500;
+}
+
+.message-card p:first-child {
+    font-family: 'Great Vibes', 'Marck Script', cursive;
+    font-size: 2.5rem;
+    color: #ff85a2;
+    text-shadow: 2px 2px 4px rgba(255, 133, 162, 0.2);
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1.5px;
+}
+
+.message-card p:first-child::before {
+    content: "✿";
+    font-size: 1.5rem;
+    position: absolute;
+    color: #ff85a2;
+    opacity: 0.7;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: floatFlower 3s ease-in-out infinite;
+}
+
+.message-card p:first-child::after {
+    content: "✿";
+    font-size: 1.5rem;
+    position: absolute;
+    color: #ff85a2;
+    opacity: 0.7;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: floatFlower 3s ease-in-out infinite 1.5s;
+}
+
+.signature {
+    font-family: 'Great Vibes', 'Dancing Script', 'Marck Script', cursive;
+    font-size: 1.8rem;
+    text-align: right;
+    color: #ff85a2;
+    letter-spacing: 1px;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to right, #ffb6c1, #ffc8dd);
+    padding: 30px 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 -5px 15px rgba(255, 133, 162, 0.3);
+    border-top: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.heart-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+footer p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    z-index: 10;
+    position: relative;
+}
+
+/* Button */
+.btn {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to right, #ff85a2, #ff5a8a);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s;
+    box-shadow: 0 6px 20px rgba(255, 90, 138, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    transform: translateY(-7px) scale(1.08);
+    box-shadow: 0 15px 30px rgba(255, 90, 138, 0.7), 0 0 0 4px rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.4s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* Animations */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseIn {
+    0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+    50% { opacity: 1; transform: translateY(0) scale(1.03); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes shimmer {
+    0% { opacity: 0; transform: rotate(0deg); }
+    20% { opacity: 0.3; }
+    40% { opacity: 0; }
+    100% { opacity: 0; transform: rotate(360deg); }
+}
+
+@keyframes heartBeat {
+    0% { transform: translateY(-50%) scale(1); }
+    15% { transform: translateY(-50%) scale(1.5); }
+    30% { transform: translateY(-50%) scale(1); }
+    45% { transform: translateY(-50%) scale(1.5); }
+    60% { transform: translateY(-50%) scale(1); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+@keyframes heartColorChange {
+    0% { background: #ff85a2; }
+    50% { background: white; }
+    100% { background: #ff85a2; }
+}
+
+@keyframes rotateFlower {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes shimmerIcon {
+    0% { opacity: 0; transform: rotate(0deg); }
+    30% { opacity: 0.5; }
+    60% { opacity: 0; }
+    100% { opacity: 0; transform: rotate(360deg); }
+}
+
+@keyframes floatFlower {
+    0%, 100% { transform: translateY(-50%) rotate(0deg); }
+    50% { transform: translateY(-50%) translateX(5px) rotate(15deg); }
+}
+
+@keyframes glitter {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+@keyframes heartPulse {
+    0% { transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(1); }
+    50% { transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(1.3); }
+    100% { transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(1); }
+}
+
+@keyframes heartShapeBefore {
+    0% { opacity: 0; transform: translateY(0) translateX(0); }
+    30% { opacity: 1; transform: translateY(-10px) translateX(-5px); }
+    60% { opacity: 0.5; transform: translateY(-15px) translateX(-10px); }
+    100% { opacity: 0; transform: translateY(-20px) translateX(-15px); }
+}
+
+@keyframes heartShapeAfter {
+    0% { opacity: 0; transform: translateY(0) translateX(0); }
+    30% { opacity: 1; transform: translateY(-10px) translateX(5px); }
+    60% { opacity: 0.5; transform: translateY(-15px) translateX(10px); }
+    100% { opacity: 0; transform: translateY(-20px) translateX(15px); }
+}
+
+/* Decorative elements */
+.sparkle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10;
+    animation: glitter 2s ease-in-out infinite;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.scroll-indicator::before {
+    content: "";
+    width: 5px;
+    height: 10px;
+    background: white;
+    border-radius: 3px;
+    margin-top: 8px;
+    animation: scrollAnimation 2s infinite;
+}
+
+@keyframes scrollAnimation {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(20px); opacity: 0; }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background: linear-gradient(to right, #ffb6c1, #ffc8dd);
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s;
+    }
+    
+    nav.active {
+        height: auto;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    nav ul li {
+        margin: 15px 0;
+        text-align: center;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .wish-card {
+        width: 100%;
+    }
+}

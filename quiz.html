@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт Иры</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;600&family=Marck+Script&family=Montserrat:wght@300;400;600&family=Pacifico&family=Caveat:wght@400;700&family=Lobster&family=Sacramento&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Сайт Иры</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">✨ <span></span>Главная</a></li>
+                <li><a href="compliments.html">❤️ <span></span>Комплименты</a></li>
+                <li><a href="gallery.html">🖼️ <span></span>Фоточки</a></li>
+                <li><a href="quiz.html">📝 <span></span>Опрос</a></li>
+                <li><a href="music.html">🎵 <span></span>Музыка</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="quiz" class="quiz-section">
+        <div class="petals-container"></div>
+        <div class="quiz-title">
+            <h2>Опрос</h2>
+            <div class="title-decoration">
+                <div class="title-sparkle left"></div>
+                <div class="title-sparkle right"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="quiz-card">
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="quiz-display">
+                    <div class="question-number">Вопрос <span id="current-question">1</span> из <span id="total-questions">10</span></div>
+                    <h3 id="question-text">Вопрос загружается...</h3>
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be added dynamically -->
+                    </div>
+                    <div class="feedback" id="feedback">
+                        <!-- Feedback will be shown here -->
+                    </div>
+                </div>
+                <div class="quiz-controls">
+                    <button id="next-question" class="btn" disabled>Следующий вопрос</button>
+                </div>
+                <div class="quiz-results" id="quiz-results" style="display: none;">
+                    <h3>Результаты опроса</h3>
+                    <p>Ты ответила правильно на <span id="correct-answers">0</span> из <span id="total-questions-result">10</span> вопросов!</p>
+                    <div class="result-message" id="result-message"></div>
+                    <button id="restart-quiz" class="btn">Пройти снова</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="heart-container"></div>
+        <p>Сигма сигма бой</p>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+/* Music Player Styles */
+.music-section {
+    min-height: 100vh;
+    padding: 120px 5% 80px;
+    background: linear-gradient(135deg, #ffb6c1, #ffc8dd, #ffafcc, #ff85a2);
+    background-size: 300% 300%;
+    position: relative;
+    overflow: hidden;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+.music-title {
+    text-align: center;
+    position: relative;
+    margin-bottom: 60px;
+    z-index: 10;
+}
+
+.music-title h2 {
+    font-family: 'Great Vibes', 'Dancing Script', 'Pacifico', cursive;
+    font-size: 4.5rem;
+    color: #fff;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 255, 255, 0.4);
+    margin: 0;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.title-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.title-sparkle {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: titleSparkle 3s ease-in-out infinite;
+}
+
+.title-sparkle.left {
+    left: -100px;
+    animation-delay: 0.5s;
+}
+
+.title-sparkle.right {
+    right: -100px;
+    animation-delay: 1.5s;
+}
+
+.music-players {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.music-player {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.music-player:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(255, 133, 162, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.9);
+}
+
+.music-player::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    animation: shimmer 8s infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Disc styles */
+.player-disc {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #333333, #111111);
+    border-radius: 50%;
+    margin-right: 25px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.disc-inner {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    background: linear-gradient(135deg, #ff85a2, #ff6699);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.disc-center {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    background: #ffffff;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.playing .player-disc {
+    animation: discRotate 3s linear infinite;
+}
+
+/* Player info styles */
+.player-info {
+    flex: 1;
+}
+
+.player-info h3 {
+    font-family: 'Dancing Script', 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: #ff6699;
+    margin: 0 0 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.player-info p {
+    font-family: 'Quicksand', sans-serif;
+    color: #777;
+    margin: 0 0 20px;
+    font-size: 0.95rem;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+}
+
+.play-pause-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff85a2, #ff6699);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 102, 153, 0.4);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.play-pause-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 102, 153, 0.6);
+}
+
+.play-pause-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.4s;
+}
+
+.play-pause-btn:hover::before {
+    left: 100%;
+}
+
+.play-pause-btn i {
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.progress-container {
+    flex: 1;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #ff85a2, #ff6699);
+    width: 0;
+    border-radius: 10px;
+    transition: width 0.1s linear;
+    position: relative;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.progress-container:hover .progress-bar::after {
+    opacity: 1;
+}
+
+/* Music note animations */
+.music-note {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(255, 133, 162, 0.6);
+    z-index: 2;
+    pointer-events: none;
+    animation: floatNote 3s linear forwards;
+}
+
+/* Animations */
+@keyframes discRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes titleSparkle {
+    0%, 100% { opacity: 0; transform: translateY(-50%) scale(0.8); }
+    50% { opacity: 0.8; transform: translateY(-50%) scale(1.2); }
+}
+
+@keyframes floatNote {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
+}
+
+@keyframes shimmer {
+    0% { opacity: 0; transform: rotate(0deg); }
+    20% { opacity: 0.3; }
+    40% { opacity: 0; }
+    100% { opacity: 0; transform: rotate(360deg); }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .music-title h2 {
+        font-size: 3rem;
+    }
+    
+    .music-players {
+        grid-template-columns: 1fr;
+    }
+    
+    .music-player {
+        padding: 15px;
+    }
+    
+    .player-disc {
+        width: 70px;
+        height: 70px;
+        margin-right: 15px;
+    }
+    
+    .player-info h3 {
+        font-size: 1.5rem;
+    }
+    
+    .play-pause-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
